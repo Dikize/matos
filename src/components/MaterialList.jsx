@@ -4,10 +4,9 @@ import { useAppContext } from '../context/AppContext';
 import { format, parseISO } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
-export default function MaterialList({ onEdit }) {
+export default function MaterialList({ onEdit, statusFilter, onStatusFilterChange }) {
   const { materials, categories, deleteMaterial, updateMaterialStatus } = useAppContext();
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [deleteConfirmId, setDeleteConfirmId] = useState(null);
 
@@ -61,7 +60,7 @@ export default function MaterialList({ onEdit }) {
           className="form-control" 
           style={{width: 'auto'}}
           value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
+          onChange={(e) => onStatusFilterChange(e.target.value)}
         >
           <option value="">Tous les statuts</option>
           <option value="A_RECUPERER">À Récupérer</option>

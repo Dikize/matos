@@ -8,6 +8,7 @@ import Settings from './components/Settings';
 function App() {
   const [currentView, setCurrentView] = useState('dashboard');
   const [editingMaterialId, setEditingMaterialId] = useState(null);
+  const [statusFilter, setStatusFilter] = useState('');
   const { materials, notifications } = useAppContext();
 
   const handleEdit = (id) => {
@@ -49,26 +50,42 @@ function App() {
       {currentView === 'dashboard' && (
         <>
           <div className="dashboard-counters">
-            <div className="glass-panel counter-card">
+            <div 
+              className="glass-panel counter-card" 
+              onClick={() => setStatusFilter('')}
+              style={{ cursor: 'pointer' }}
+            >
               <PackageOpen className="icon" />
               <div className="counter-value">{materials.length}</div>
               <div className="counter-label">Total Matériels</div>
             </div>
-            <div className="glass-panel counter-card status-a-recuperer">
+            <div 
+              className="glass-panel counter-card status-a-recuperer"
+              onClick={() => setStatusFilter('A_RECUPERER')}
+              style={{ cursor: 'pointer' }}
+            >
               <Clock className="icon" />
               <div className="counter-value">
                 {materials.filter(m => m.status === 'A_RECUPERER').length}
               </div>
               <div className="counter-label">À Récupérer</div>
             </div>
-            <div className="glass-panel counter-card status-valide">
+            <div 
+              className="glass-panel counter-card status-valide"
+              onClick={() => setStatusFilter('VALIDE')}
+              style={{ cursor: 'pointer' }}
+            >
               <CheckCircle className="icon" />
               <div className="counter-value">
                 {materials.filter(m => m.status === 'VALIDE').length}
               </div>
               <div className="counter-label">Validé</div>
             </div>
-            <div className="glass-panel counter-card status-stand-by">
+            <div 
+              className="glass-panel counter-card status-stand-by"
+              onClick={() => setStatusFilter('STAND_BY')}
+              style={{ cursor: 'pointer' }}
+            >
               <AlertTriangle className="icon" />
               <div className="counter-value">
                 {materials.filter(m => m.status === 'STAND_BY').length}
@@ -78,7 +95,11 @@ function App() {
           </div>
 
           <div className="glass-panel">
-            <MaterialList onEdit={handleEdit} />
+            <MaterialList 
+              onEdit={handleEdit} 
+              statusFilter={statusFilter} 
+              onStatusFilterChange={setStatusFilter} 
+            />
           </div>
         </>
       )}
