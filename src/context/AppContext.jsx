@@ -6,43 +6,84 @@ const AppContext = createContext();
 export const useAppContext = () => useContext(AppContext);
 
 const MOCK_CATEGORIES = [
-  { id: '1', name: 'Extincteurs' },
-  { id: '2', name: 'Détecteurs' },
+  { id: 'cat_1', name: 'Extincteurs EAU' },
+  { id: 'cat_2', name: 'Extincteurs CO2' },
+  { id: 'cat_3', name: 'Extincteurs ABC' },
+  { id: 'cat_4', name: 'Extincteurs ROUES' },
+  { id: 'cat_5', name: 'SIGNALÉTIQUES' },
+  { id: 'cat_6', name: 'PIECES DETACHEES' },
 ];
 
 const MOCK_PRODUCTS = [
-  { id: '1', name: 'E6EVT', categoryId: '1' },
-  { id: '2', name: 'E6FFF', categoryId: '1' },
-  { id: '3', name: 'DAAF', categoryId: '2' },
+  // Extincteurs EAU
+  { id: 'p1', name: 'E615FF', categoryId: 'cat_1' },
+  { id: 'p2', name: 'E915FF', categoryId: 'cat_1' },
+  { id: 'p3', name: 'E615FFT', categoryId: 'cat_1' },
+  { id: 'p4', name: 'E915FFT', categoryId: 'cat_1' },
+  { id: 'p5', name: 'AL6T-30', categoryId: 'cat_1' },
+  { id: 'p6', name: 'AL9T-30', categoryId: 'cat_1' },
+  { id: 'p7', name: 'AL6F', categoryId: 'cat_1' },
+  { id: 'p8', name: 'AL6 LI-ION', categoryId: 'cat_1' },
+  { id: 'p9', name: 'AL9 LI-ION', categoryId: 'cat_1' },
+  
+  // Extincteurs CO2
+  { id: 'p10', name: 'CO2 2KG', categoryId: 'cat_2' },
+  { id: 'p11', name: 'CO2 5KG', categoryId: 'cat_2' },
+  
+  // Extincteurs ABC
+  { id: 'p12', name: 'PP6P', categoryId: 'cat_3' },
+  { id: 'p13', name: 'P9P', categoryId: 'cat_3' },
+  { id: 'p14', name: 'PP2P', categoryId: 'cat_3' },
+  { id: 'p15', name: 'PP1P', categoryId: 'cat_3' },
+  { id: 'p16', name: 'P25P', categoryId: 'cat_3' },
+  
+  // Extincteurs ROUES
+  { id: 'p17', name: 'E45A1FF', categoryId: 'cat_4' },
+  { id: 'p18', name: 'E45A1FFT', categoryId: 'cat_4' },
+  { id: 'p19', name: 'P50P', categoryId: 'cat_4' },
+  { id: 'p20', name: 'P25P_R', name: 'P25P', categoryId: 'cat_4' },
+  { id: 'p21', name: 'CO2 20KG', categoryId: 'cat_4' },
+  { id: 'p22', name: 'CO2 45KG', categoryId: 'cat_4' },
+  
+  // SIGNALÉTIQUES
+  { id: 'p23', name: 'PLAQUE EXTINCTEUR CO2', categoryId: 'cat_5' },
+  { id: 'p24', name: 'PLAQUE EXTINCTEUR AB', categoryId: 'cat_5' },
+  { id: 'p25', name: 'PLAQUE EXTINCTEUR ABC', categoryId: 'cat_5' },
+  { id: 'p26', name: 'PLAQUE EXTINCTEUR BC', categoryId: 'cat_5' },
+  { id: 'p27', name: 'PLAQUE EXTINCTEUR AF', categoryId: 'cat_5' },
+  { id: 'p28', name: 'PLAQUE EXTINCTEUR D', categoryId: 'cat_5' },
+  { id: 'p29', name: 'CHAUFFERIE GAZ', categoryId: 'cat_5' },
+  { id: 'p30', name: 'SUR ROUE', categoryId: 'cat_5' },
+  
+  // PIECES DETACHEES
+  { id: 'p31', name: 'SCELLE MILLESIME', categoryId: 'cat_6' },
+  { id: 'p32', name: 'JOINT EXT P-E 6-9', categoryId: 'cat_6' },
+  { id: 'p33', name: 'OPERCULE EXT', categoryId: 'cat_6' },
+  { id: 'p34', name: 'PERCUTEUR', categoryId: 'cat_6' },
+  { id: 'p35', name: 'SUPPORT MURAL CO2', categoryId: 'cat_6' },
+  { id: 'p36', name: 'SUPPORT MURAL P-E', categoryId: 'cat_6' },
+  { id: 'p37', name: 'VIGI’CLIP', categoryId: 'cat_6' },
+  { id: 'p38', name: 'ETIQUETTE VÉRIF EXT', categoryId: 'cat_6' },
+  { id: 'p39', name: 'ETIQUETTE VÉRIF BAES', categoryId: 'cat_6' },
+  { id: 'p40', name: 'ETIQUETTE QUINQUENNAL', categoryId: 'cat_6' },
+  { id: 'p41', name: 'ETIQUETTE VÉRIF TRANSPORT', categoryId: 'cat_6' },
+  { id: 'p42', name: 'ETIQUETTE VÉRIF PETROLIER', categoryId: 'cat_6' },
+  { id: 'p43', name: 'TAMIS', categoryId: 'cat_6' },
+  { id: 'p44', name: 'MICRO-BIO', categoryId: 'cat_6' },
+  { id: 'p45', name: 'TÊTE E6', categoryId: 'cat_6' },
+  { id: 'p46', name: 'TÊTE E9', categoryId: 'cat_6' },
+  { id: 'p47', name: 'TÊTE P6', categoryId: 'cat_6' },
+  { id: 'p48', name: 'TÊTE P9', categoryId: 'cat_6' },
+  { id: 'p49', name: 'LANCE PULVÉRISATRICE', categoryId: 'cat_6' },
+  { id: 'p50', name: 'TUYAU', categoryId: 'cat_6' },
 ];
 
-const MOCK_MATERIALS = [
-  {
-    id: '1',
-    productName: 'E6EVT',
-    client: 'Agence Alpha',
-    categoryId: '1',
-    quantity: 5,
-    status: 'A_RECUPERER',
-    expectedRecoveryDate: '2026-05-20',
-    receptionDate: ''
-  },
-  {
-    id: '2',
-    productName: 'DAAF',
-    client: 'Client Beta',
-    categoryId: '2',
-    quantity: 10,
-    status: 'VALIDE',
-    expectedRecoveryDate: '',
-    receptionDate: '2026-05-10'
-  }
-];
+const MOCK_MATERIALS = [];
 
 export const AppProvider = ({ children }) => {
-  const [categories, setCategories] = useLocalStorage('app_categories', MOCK_CATEGORIES);
-  const [products, setProducts] = useLocalStorage('app_products', MOCK_PRODUCTS);
-  const [materials, setMaterials] = useLocalStorage('app_materials', MOCK_MATERIALS);
+  const [categories, setCategories] = useLocalStorage('app_categories_v2', MOCK_CATEGORIES);
+  const [products, setProducts] = useLocalStorage('app_products_v2', MOCK_PRODUCTS);
+  const [materials, setMaterials] = useLocalStorage('app_materials_v2', MOCK_MATERIALS);
   const [notifications, setNotifications] = useState([]);
 
   const addNotification = (message, type = 'success') => {
