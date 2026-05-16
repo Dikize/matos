@@ -6,7 +6,7 @@ import MaterialForm from './components/MaterialForm';
 import Settings from './components/Settings';
 
 function App() {
-  const [currentView, setCurrentView] = useState('dashboard');
+  const [currentView, setCurrentView] = useState('form');
   const [editingMaterialId, setEditingMaterialId] = useState(null);
   const [statusFilter, setStatusFilter] = useState('');
   const { materials, notifications } = useAppContext();
