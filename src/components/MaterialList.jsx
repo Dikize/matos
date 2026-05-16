@@ -126,7 +126,7 @@ export default function MaterialList({ onEdit, statusFilter, onStatusFilterChang
                     className="btn-icon" 
                     onClick={() => updateMaterialStatus(material.id, material.status, { receptionDate: new Date().toISOString().split('T')[0] }, 'Matériel reçu à l\'agence')}
                   >
-                    <Package size={18} />
+                    <Package size={18} /> Reçu
                   </button>
                 )}
                 {material.status === 'A_RECUPERER' && (
@@ -135,7 +135,7 @@ export default function MaterialList({ onEdit, statusFilter, onStatusFilterChang
                     className="btn-icon" 
                     onClick={() => updateMaterialStatus(material.id, 'VALIDE')}
                   >
-                    <CheckCircle size={18} />
+                    <CheckCircle size={18} /> Valider
                   </button>
                 )}
                 {material.status !== 'STAND_BY' && (
@@ -144,7 +144,7 @@ export default function MaterialList({ onEdit, statusFilter, onStatusFilterChang
                     className="btn-icon" 
                     onClick={() => updateMaterialStatus(material.id, 'STAND_BY')}
                   >
-                    <Clock size={18} />
+                    <Clock size={18} /> Stand By
                   </button>
                 )}
                 <button 
@@ -152,14 +152,14 @@ export default function MaterialList({ onEdit, statusFilter, onStatusFilterChang
                   className="btn-icon" 
                   onClick={() => onEdit(material.id)}
                 >
-                  <Edit2 size={18} />
+                  <Edit2 size={18} /> Modifier
                 </button>
                 <button 
                   title="Supprimer" 
                   className="btn-icon danger" 
                   onClick={() => setDeleteConfirmId(material.id)}
                 >
-                  <Trash2 size={18} />
+                  <Trash2 size={18} /> Supprimer
                 </button>
               </div>
             </div>
