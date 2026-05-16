@@ -119,6 +119,10 @@ body {
   justify-content: center;
   padding: 2rem;
   text-align: center;
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  border: none;
 }
 
 .counter-card .icon {

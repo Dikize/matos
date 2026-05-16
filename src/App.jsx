@@ -50,7 +50,7 @@ function App() {
       {currentView === 'dashboard' && (
         <>
           <div className="dashboard-counters">
-            <div 
+            <button 
               className="glass-panel counter-card" 
               onClick={() => setStatusFilter('')}
               style={{ cursor: 'pointer' }}
@@ -58,8 +58,8 @@ function App() {
               <PackageOpen className="icon" />
               <div className="counter-value">{materials.length}</div>
               <div className="counter-label">Total Matériels</div>
-            </div>
-            <div 
+            </button>
+            <button 
               className="glass-panel counter-card status-a-recuperer"
               onClick={() => setStatusFilter('A_RECUPERER')}
               style={{ cursor: 'pointer' }}
@@ -69,8 +69,8 @@ function App() {
                 {materials.filter(m => m.status === 'A_RECUPERER').length}
               </div>
               <div className="counter-label">À Récupérer</div>
-            </div>
-            <div 
+            </button>
+            <button 
               className="glass-panel counter-card status-valide"
               onClick={() => setStatusFilter('VALIDE')}
               style={{ cursor: 'pointer' }}
@@ -80,8 +80,8 @@ function App() {
                 {materials.filter(m => m.status === 'VALIDE').length}
               </div>
               <div className="counter-label">Validé</div>
-            </div>
-            <div 
+            </button>
+            <button 
               className="glass-panel counter-card status-stand-by"
               onClick={() => setStatusFilter('STAND_BY')}
               style={{ cursor: 'pointer' }}
@@ -91,7 +91,7 @@ function App() {
                 {materials.filter(m => m.status === 'STAND_BY').length}
               </div>
               <div className="counter-label">Stand By</div>
-            </div>
+            </button>
           </div>
 
           <div className="glass-panel">
