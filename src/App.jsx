@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { PackageOpen, LayoutDashboard, PlusCircle, Settings as SettingsIcon, CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 import { useAppContext } from './context/AppContext';
 import MaterialList from './components/MaterialList';
@@ -9,7 +9,15 @@ function App() {
   const [currentView, setCurrentView] = useState('form');
   const [editingMaterialId, setEditingMaterialId] = useState(null);
   const [statusFilter, setStatusFilter] = useState('');
+  const listRef = useRef(null);
   const { materials, notifications } = useAppContext();
+
+  const handleFilterClick = (status) => {
+    setStatusFilter(status);
+    setTimeout(() => {
+      listRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
 
   const handleEdit = (id) => {
     setEditingMaterialId(id);
@@ -52,7 +60,7 @@ function App() {
           <div className="dashboard-counters">
             <button 
               className="glass-panel counter-card" 
-              onClick={() => setStatusFilter('')}
+              onClick={() => handleFilterClick('')}
               style={{ cursor: 'pointer' }}
             >
               <PackageOpen className="icon" />
@@ -61,7 +69,7 @@ function App() {
             </button>
             <button 
               className="glass-panel counter-card status-a-recuperer"
-              onClick={() => setStatusFilter('A_RECUPERER')}
+              onClick={() => handleFilterClick('A_RECUPERER')}
               style={{ cursor: 'pointer' }}
             >
               <Clock className="icon" />
@@ -72,7 +80,7 @@ function App() {
             </button>
             <button 
               className="glass-panel counter-card status-valide"
-              onClick={() => setStatusFilter('VALIDE')}
+              onClick={() => handleFilterClick('VALIDE')}
               style={{ cursor: 'pointer' }}
             >
               <CheckCircle className="icon" />
@@ -83,7 +91,7 @@ function App() {
             </button>
             <button 
               className="glass-panel counter-card status-stand-by"
-              onClick={() => setStatusFilter('STAND_BY')}
+              onClick={() => handleFilterClick('STAND_BY')}
               style={{ cursor: 'pointer' }}
             >
               <AlertTriangle className="icon" />
@@ -94,7 +102,7 @@ function App() {
             </button>
           </div>
 
-          <div className="glass-panel">
+          <div className="glass-panel" ref={listRef}>
             <MaterialList 
               onEdit={handleEdit} 
               statusFilter={statusFilter} 
