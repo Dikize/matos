@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Edit2, Trash2, CheckCircle, Clock, AlertTriangle, Calendar } from 'lucide-react';
+import { Edit2, Trash2, CheckCircle, Clock, AlertTriangle, Calendar, Package } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import { format, parseISO } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -120,6 +120,15 @@ export default function MaterialList({ onEdit, statusFilter, onStatusFilterChang
               </div>
 
               <div className="material-actions">
+                {!material.receptionDate && (
+                  <button 
+                    title="Marquer comme reçu à l'agence" 
+                    className="btn-icon" 
+                    onClick={() => updateMaterialStatus(material.id, material.status, { receptionDate: new Date().toISOString().split('T')[0] }, 'Matériel reçu à l\'agence')}
+                  >
+                    <Package size={18} />
+                  </button>
+                )}
                 {material.status === 'A_RECUPERER' && (
                   <button 
                     title="Valider" 

@@ -136,9 +136,9 @@ export const AppProvider = ({ children }) => {
     addNotification('Matériel supprimé', 'info');
   };
 
-  const updateMaterialStatus = (id, status, extraData = {}) => {
+  const updateMaterialStatus = (id, status, extraData = {}, message = 'Statut mis à jour') => {
     setMaterials(materials.map(m => m.id === id ? { ...m, status, ...extraData } : m));
-    addNotification('Statut mis à jour', 'success');
+    addNotification(message, 'success');
   };
 
   return (
