@@ -40,10 +40,19 @@ export default function MaterialForm({ materialId, onSuccess, onCancel }) {
     
     if (isEditing) {
       updateMaterial(materialId, formData);
+      onSuccess();
     } else {
       addMaterial(formData);
+      setFormData({
+        productName: '',
+        client: '',
+        categoryId: '',
+        quantity: 1,
+        status: 'A_RECUPERER',
+        expectedRecoveryDate: '',
+        receptionDate: ''
+      });
     }
-    onSuccess();
   };
 
   // Filter products based on selected category

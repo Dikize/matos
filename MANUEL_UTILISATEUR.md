@@ -18,7 +18,7 @@ L'en-tête (Header) contient trois onglets principaux :
 5. **Client** (Optionnel) : Saisissez le nom du client ou de l'agence.
 6. **Statut** : Choisissez entre *À récupérer*, *Validé* ou *Stand By*.
 7. **Dates** : Vous pouvez renseigner une date prévue de récupération ou une date de réception.
-8. Cliquez sur **"Créer le matériel"**.
+8. Cliquez sur **"Créer le matériel"**. Une notification confirmera l'ajout, et le formulaire sera vidé pour vous permettre de saisir immédiatement un autre matériel sans avoir à changer de page.
 
 ### Consulter et Filtrer le stock
 Dans le **Tableau de bord**, vous disposez de plusieurs outils :
